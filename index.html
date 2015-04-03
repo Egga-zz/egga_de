@@ -1,97 +1,148 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="EggApp">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Egga - Jan Hartung - Software Craftsman in Berlin</title>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Egga - Jan Hartung - Software Craftsman in Berlin</title>
 
-        <meta name="theme-color" content="#00bcd4">
-        <meta name="description" content="Experienced Coder, Aspiring Software Craftsman, Passionate Learner">
-        <link rel=”author” href=”https://plus.google.com/+JanHartung“/>
+    <meta name="theme-color" content="#00bcd4">
+    <meta name="description" content="Experienced Coder, Aspiring Software Craftsman, Passionate Learner">
+    <link rel=”author” href=”https://plus.google.com/+JanHartung“/>
 
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-        <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.1.5/css/material.min.css" rel="stylesheet">
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.1.5/css/material.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
 
-        <link rel="contact" title="Contact" href="/#/contact" />
+    <link rel="contact" title="Contact" href="/#/contact"/>
 
-        <style>
-            body { padding: 0.5em; padding-top: 70px; margin-right:1.5em; }
-            .fa {  margin-left: 2.5em; }
-            .row-content {  padding-left: 4em; }
-            .well { margin: 1em; }
-            .label-inverse { background-color: #ffffff; margin: 0.5em; }
-            .label-inverse a { color: #00ccff; }
-            #footer { padding: 1em; }
-        </style>
-    </head>
-    <body>
+    <style>
+        body {
+            padding: 0.5em;
+            padding-top: 70px;
+            margin-right: 1.5em;
+        }
 
-        <nav class="navbar navbar-material-cyan navbar-fixed-top" role="navigation">
-            <div class="navbar-header">
-                <a class="navbar-brand" style="background: url(img/logo.png) no-repeat; background-position:5px 5px; padding-left: 60px;">Egga</a>
-            </div>
-        </nav>
+        .fa {
+            margin-left: 2.5em;
+        }
 
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
+        .row-content {
+            padding-left: 4em;
+        }
 
-                <div class="jumbotron">
-                    <h1>Passionate Software Craftsman</h1>
-                    <p>I am very passionate about code quality, tirelessly improve my skills and care about delivering high-grade results. I have written software in over a dozen languages for dozens of platforms. From GUI driven apps over web sites and command line applications to highly available services running on hundreds of servers.</p>
+        .well {
+            margin: 1em;
+        }
+
+        .label-inverse {
+            background-color: #ffffff;
+            margin: 0.5em;
+        }
+
+        .label-inverse a {
+            color: #00ccff;
+        }
+
+        #footer {
+            padding: 1em;
+        }
+    </style>
+</head>
+<body>
+
+
+<nav class="navbar navbar-material-cyan navbar-fixed-top" role="navigation">
+
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="" style="background: url(img/logo.png) no-repeat; background-position:5px 5px; padding-left: 60px;">Egga</a>
+    </div>
+    <div class="navbar-collapse collapse navbar-responsive-collapse">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="javascript:void(0)">Contact</a></li>
+            <li class="active"><a href="javascript:void(0)">Coding</a></li>
+            <li><a href="javascript:void(0)">Link</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+
+        <div class="jumbotron">
+            <h1>Passionate Software Craftsman</h1>
+
+            <p>I am very passionate about code quality, tirelessly improve my skills and care about delivering
+                high-grade results. I have written software in over a dozen languages for dozens of platforms. From GUI
+                driven apps over web sites and command line applications to highly available services running on
+                hundreds of servers.</p>
+        </div>
+
+        <h2>Contact</h2>
+
+        <div class="list-group" ng-controller="ContactController">
+
+            <div class="list-group-item well" ng-repeat="site in sites">
+                <div class="row-action-primary">
+                    <i class="icon fa {{ site.icon }} fa-li"></i>
                 </div>
+                <div class="row-content">
+                    <h4 class="list-group-item-heading">{{ site.name }}</h4>
 
-                <h2>Contact</h2>
-                <div class="list-group" ng-controller="ContactController">
-
-                    <div class="list-group-item well" ng-repeat="site in sites">
-                        <div class="row-action-primary">
-                            <i class="icon fa {{ site.icon }} fa-li"></i>
-                        </div>
-                        <div class="row-content">
-                            <h4 class="list-group-item-heading">{{ site.name }}</h4>
-
-                            <a ng-href="{{site.url}}" target="_blank" ng-if="site.url">
-                                {{site.label}}
-                            </a>
-                            <span ng-bind="site.label" ng-if="!site.url"/>
-                        </div>
-                    </div>
+                    <a ng-href="{{site.url}}" target="_blank" ng-if="site.url">
+                        {{site.label}}
+                    </a>
+                    <span ng-bind="site.label" ng-if="!site.url"/>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
-        <div class="container-fluid navbar-material-cyan text-center" ng-controller="FooterController">
-            <p>This site was made using awesome open source projects!</p>
+<div class="container-fluid navbar-material-cyan text-center" ng-controller="FooterController">
+    <p>This site was made using awesome open source projects!</p>
 
-            <div class="row" >
+    <div class="row">
                 <span class="label label-inverse" ng-repeat="site in sites">
                          {{site.label}}
                     <a href="{{ site.url }}" target="_blank">{{ site.name }}</a>
                 </span>
-            </div>
-        </div>
+    </div>
+</div>
 
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-sanitize.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.1/ui-bootstrap-tpls.min.js"></script>
-        <script src="js/app.js"></script>
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-sanitize.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.1/ui-bootstrap-tpls.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.js"></script>
+<script src="js/app.js"></script>
 
-        <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-            ga('create', 'UA-60612865-1', 'auto');
-            ga('send', 'pageview');
-        </script>
-    </body>
+    ga('create', 'UA-60612865-1', 'auto');
+    ga('send', 'pageview');
+</script>
+</body>
 </html>

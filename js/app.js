@@ -1,4 +1,16 @@
-var app = angular.module('EggApp', []);
+var app = angular.module('EggApp', ['ngRoute']);
+
+
+app.config(function($routeProvider, $locationProvider) {
+    $routeProvider
+        .when('/contact', {
+            templateUrl: 'book.html',
+            controller: 'BookController',
+        })
+        .when('/Book/:bookId/ch/:chapterId', {
+            templateUrl: 'chapter.html',
+            controller: 'ChapterController'
+        });
 
 
 app.controller('ContactController', ['$scope', '$http',
